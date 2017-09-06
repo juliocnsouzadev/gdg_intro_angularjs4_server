@@ -138,7 +138,6 @@
                             <properties>
                                 <name>${project.groupId}-${project.artifactId}-autodeploy</name>
                             </properties>
-                            <type>war</type>
                         </deployable>
                     </deployables>
 

@@ -99,40 +99,56 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.3.3</version>
+                <version>1.4.10</version>
+
+                <executions>
+                    <execution>
+                        <id>glassfish-deploy</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
                 <configuration>
                     <container>
-                        <containerId>glassfish3x</containerId>
+                        <containerId>glassfish4x</containerId>
                         <type>remote</type>
+                        <log>target/cargo.log</log>
+                        <logLevel>debug</logLevel>
                     </container>
                     <configuration>
                         <type>runtime</type>
                         <properties>
                             <cargo.hostname>69.10.49.96</cargo.hostname>
+                            <cargo.rmi.port>4848</cargo.rmi.port>
+                            <cargo.remote.port>8080</cargo.remote.port>
+                            <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
+                            <cargo.runtime.args>force=true</cargo.runtime.args>
+                            <cargo.protocol>https</cargo.protocol>
                             <cargo.remote.username>admin</cargo.remote.username>
                             <cargo.remote.password>V4509JyVSI</cargo.remote.password>
-                            <cargo.remote.port>8080</cargo.remote.port>
-                            <cargo.glassfish.domain.name>/students</cargo.glassfish.domain.name>
                         </properties>
                     </configuration>
+
                     <deployables>
                         <deployable>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <type>war</type>
+                            <location>${project.build.directory}/${project.build.finalName}.${project.packaging}</location>
                             <properties>
-                                <context>/students</context>
+                                <name>${project.groupId}-${project.artifactId}-autodeploy</name>
                             </properties>
+                            <type>war</type>
                         </deployable>
                     </deployables>
+
                 </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>org.glassfish.deployment</groupId>
+                        <groupId>org.glassfish.main.deployment</groupId>
                         <artifactId>deployment-client</artifactId>
-                        <version>3.2-b06</version>
+                        <version>4.1</version>
                     </dependency>
-                    
                 </dependencies>
             </plugin>
         </plugins>

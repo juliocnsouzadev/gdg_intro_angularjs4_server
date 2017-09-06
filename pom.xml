@@ -132,6 +132,7 @@
                         <artifactId>deployment-client</artifactId>
                         <version>3.2-b06</version>
                     </dependency>
+                    
                 </dependencies>
             </plugin>
         </plugins>

@@ -135,9 +135,6 @@
                     <deployables>
                         <deployable>
                             <location>${project.build.directory}/${project.build.finalName}.${project.packaging}</location>
-                            <properties>
-                                <name>${project.groupId}-${project.artifactId}-autodeploy</name>
-                            </properties>
                         </deployable>
                     </deployables>
 

@@ -154,6 +154,30 @@
                 </dependencies>
             </plugin>
             -->
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <glassfishDirectory>${GLASSFISH_HOME}</glassfishDirectory>
+                    <user>${glassfish.user}</user>
+                    <passwordFile>4e0y8lss2N</passwordFile>
+                    <echo>true</echo>
+                    <debug>true</debug>
+                    <terse>true</terse>
+                    <domain>
+                        <name>domain1</name>
+                        <host>https://juliocnsouza.mircloud.us</host>
+                        <adminPort>4848</adminPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

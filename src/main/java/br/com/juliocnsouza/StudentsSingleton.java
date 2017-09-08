@@ -25,7 +25,7 @@ public class StudentsSingleton {
     private void addDefaul() {
 
         Student s = new Student();
-        s.name = "Julio Souza";
+        s.name = "Julio CN Souza";
         s.ra = getRA();
         students.add( s );
     }
